@@ -77,6 +77,11 @@ Esta logica permita que tanto el servicio como las demas capas se abstraigan de 
 Se ha incluido un fichero install.sh para instalar las dependencias del jar que se indicaba en el enunciado de la prueba y ademas empaquetar el artefacto en un fichero .jar. Este se puede encontrar en target/calculator-api.jar. Para ejecutar el mismo, debe ejecutar el siguiente comando: java -jar target/calculator-api.jar
 
 A continación se indican los comandos a ejecutar:
+```
+bash install.sh
+```
+
+o bien puede ejecutar los comandos del script:
 
 ```
 mvn install:install-file -Dfile=./lib/tracer-1.0.0.jar -DgroupId=io.corp.calculator -DartifactId=tracer -Dversion=1.0.0
