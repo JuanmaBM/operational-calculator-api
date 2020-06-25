@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.corp.calculator.TracerImpl;
 import java.util.function.Function;
 
 @RestController
@@ -20,6 +21,7 @@ import java.util.function.Function;
 public class CalculatorController {
 
     @Autowired private OperationalCalculatorService operationalCalculatorService;
+    @Autowired private TracerImpl tracer;
 
     private Function<OperationResponse, ResponseDto> toResponseDto =
         x -> ResponseDto.builder().result(x.getResult()).build();
@@ -31,9 +33,12 @@ public class CalculatorController {
             .orElseThrow(() -> new UnsupportedOperationException(String.format("Operation %s not supported",
                 operationDto.getOperation())));
 
-        return operationalCalculatorService
+        final ResponseDto response = operationalCalculatorService
             .performOperation(operationDto.getParameter1(), operationDto.getParameter2(), operationType)
             .map(toResponseDto)
             .orElse(ResponseDto.builder().build());
+
+        tracer.trace(response);
+        return response;
     }
 }
