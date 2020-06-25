@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.corp.calculator.TracerImpl;
+import io.swagger.annotations.ApiOperation;
 import java.util.function.Function;
 
 @RestController
@@ -27,6 +28,7 @@ public class CalculatorController {
         x -> ResponseDto.builder().result(x.getResult()).build();
 
     @PostMapping
+    @ApiOperation("Realiza la operacion seleccionada sobre los parametros indicados")
     public ResponseDto performOperation(@RequestBody @Valid final OperationDto operationDto) {
 
         final OperationType operationType = OperationType.from(operationDto.getOperation())

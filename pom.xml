@@ -16,6 +16,8 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <tracer.version>1.0.0</tracer.version>
+        <swagger.version>2.9.2</swagger.version>
     </properties>
 
     <dependencies>
@@ -30,7 +32,17 @@
         <dependency>
             <groupId>io.corp.calculator</groupId>
             <artifactId>tracer</artifactId>
-            <version>1.0.0</version>
+            <version>${tracer.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swagger.version}</version>
         </dependency>
 
         <dependency>
@@ -52,6 +64,7 @@
     </dependencies>
 
     <build>
+        <finalName>calculator-api</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
