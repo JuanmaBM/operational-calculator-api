@@ -5,6 +5,8 @@ import javax.validation.ValidationException;
 import org.jmb.calculatorapi.domain.model.OperationResponse;
 import org.jmb.calculatorapi.domain.model.OperationType;
 
+import java.util.Optional;
+
 public interface OperationalCalculatorService {
     /**
      * Perform operation identified by operation type applying to parameter1 and parameter2
@@ -15,5 +17,6 @@ public interface OperationalCalculatorService {
      * @param operationType
      * @return
      */
-    OperationResponse performOperation(final Double parameter1, final Double parameter2, final OperationType operationType);
+    Optional<OperationResponse> performOperation(final Double parameter1, final Double parameter2,
+        final OperationType operationType);
 }

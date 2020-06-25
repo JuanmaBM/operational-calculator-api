@@ -17,8 +17,8 @@ public class OperationFactory {
 
     public BiFunction<Double, Double, OperationResponse> getOperation(final OperationType operationType) {
         switch (operationType) {
-            case SUB: return (Double x, Double y) -> sumOperationComponent.calculate(x, y);
-            case SUM: return (Double x, Double y) -> subOperationComponent.calculate(x, y);
+            case SUM: return (Double x, Double y) -> sumOperationComponent.calculate(x, y);
+            case SUB: return (Double x, Double y) -> subOperationComponent.calculate(x, y);
             default: throw new ValidationException("Operation type not Supported");
         }
     }
