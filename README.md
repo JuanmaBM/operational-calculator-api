@@ -39,7 +39,7 @@ En el escenario actual, no disponemos de almacenamiento de información y solo t
 Respecto a la capa de negocio, se define como un dominio especifico de la lógica de negocio, esto quiere decir que formará parte de una capa independiente y desacoplada de las demas, de forma que se abstraiga de cualquier cambio a nivel de arquitectura de la aplicación. De este modo, si se decide cambiar el uso de controladores por un sistemas de colas o incluso recibir el input del usuario a través de la línea de comandos, la capa de negocio no necesitaría realizar ningun cambio.
 
 ### Contrato del API
-El API constará de un único endpoint, a pesar de no ser un API orientado al uso RESTFUL ya que no se consume un recurso como tal, se intentará seguir las buenas practicas de comunicación entre APIs, por tanto, se expone el siguiente endpoint:
+El API constará de un único endpoint, a pesar de no ser un API orientado consumo de recursos como tal, se intentará seguir las buenas practicas de comunicación RESTFUL entre APIs, por tanto, se expone el siguiente endpoint:
 
  POST /calculadora
  
@@ -52,7 +52,9 @@ Donde el cuerpo de la petición tendrá el siguiente formato:
   "operacion":"SUM"
 }
 ```
-Donde la operación deberá ser un valor predeterminado de los disponible como operaciones permitidas dentro del microservicio. De esta forma, el API es extensible a la generación de nuevas operaciones sin perjudicar a los consumidores del API. Esto permitirá que el microservicio se despliegue con tecnicas como Canary Test/Canary Deployment sin que los consumidores sean afectados añadiendo de forma inmediata nuevas operaciones sin que estos tengan que cambiar el contrato del API.
+Donde la operación deberá ser un valor predeterminado de los disponible como operaciones permitidas dentro del microservicio. De esta forma, el API es extensible a la generación de nuevas operaciones sin perjudicar a los consumidores del API.
+
+Esto permitirá que el microservicio se despliegue con tecnicas como Canary Test/Canary Deployment sin que los consumidores sean afectados añadiendo de forma inmediata nuevas operaciones sin que estos tengan que cambiar el contrato del API.
 
 Como respuesta se devuelve un json con un campo con el valor obtenido. Se realiza de esta forma para adaptar a posibles extensiones en el tipo de resupuesta ante operaciones complejas. 
 
