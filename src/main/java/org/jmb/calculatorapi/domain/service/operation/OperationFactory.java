@@ -15,6 +15,12 @@ public class OperationFactory {
     @Autowired private SumOperationComponent sumOperationComponent;
     @Autowired private SubOperationComponent subOperationComponent;
 
+    /**
+     * Get the function identified by the operation type
+     * @throw ValidationException If operation hasn't got associated function
+     * @param operationType
+     * @return
+     */
     public BiFunction<Double, Double, OperationResponse> getOperation(final OperationType operationType) {
         switch (operationType) {
             case SUM: return (Double x, Double y) -> sumOperationComponent.calculate(x, y);
