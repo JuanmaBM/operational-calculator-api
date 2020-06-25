@@ -102,3 +102,7 @@ POST localhost:8080/calculadora
   "operacion":"sum"
 }
 ```
+
+# Testing
+
+Debido a la duración de la prueba no se ha podido realizar la implementación de pruebas. Sin embargo, consideramos que la implementación de cualquier desarrollo no está completa sin test que acrediten su correcto funcionamiento, por lo que es imprescindible que junto con cualquier entrega de software el acompañe el conjunto de test que acredite tanto su validez como su calidad.
