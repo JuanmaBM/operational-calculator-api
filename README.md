@@ -36,7 +36,7 @@ Para realizar el proceso de diseño se seguirá un enfoque Top-Down, es decir, p
 
 En el escenario actual, no disponemos de almacenamiento de información y solo tenemos una capa de negocio que es la encarga de realizar las operaciones. Por tanto a nivel de diseño por capas se define la siguiente estructura: Capa web => Capa de negocio
 
-Respecto a la capa de negocio, se define como un dominio especifico de la lógica de negocio, esto quiere decir que formará parte de una capa independiente y desacoplada de las demas, de forma que se abstraiga de cualquier cambio a nivel de arquitectura de la aplicación. De este modo, si se decide cambiar el uso de controladores por un sistemas de colas o incluso recibir el input del usuario a través de la línea de comandos, la capa de negocio no necesitaría realizar ningun cambio.
+Respecto a la capa de negocio, se define como un dominio especifico de la lógica de negocio, esto quiere decir que formará parte de una capa independiente y desacoplada de las demas, de forma que se abstraiga de cualquier cambio a nivel de arquitectura de la aplicación (Arquitectura Hexagonal). De este modo, si se decide cambiar el uso de controladores por un sistemas de colas o incluso recibir el input del usuario a través de la línea de comandos, la capa de negocio no necesitaría realizar ningun cambio.
 
 ### Contrato del API
 El API constará de un único endpoint, a pesar de no ser un API orientado al uso RESTFUL ya que no se consume un recurso como tal, se intentará seguir las buenas practicas de comunicación entre APIs, por tanto, se expone el siguiente endpoint:
