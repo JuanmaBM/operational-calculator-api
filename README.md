@@ -56,3 +56,11 @@ Por otra parte, la inclusión de valores no permitidos en los parametros puede o
 * Bad Request 400 -> El tipo del valor de los parametros enviados no es permitido por el API
 * Unprocesable Entity 422 -> Los parametros enviados no pasaron la validación para la operación seleccionada.
 * Not Implemented 501 -> La operación seleccionada no está disponible en el servicio.
+
+### Implementación/Arquitectura
+
+Para facilitar la implementación de futuras operaciones, se ha definido una factoria de operaciones que devuelve la función que ha de ejecutarse sobre los parametros de entrada.
+Si se desea implementar nuevas operaciones, se debe añadir el tipo de operación al enumerado OperationType, junto con su codigo correspondiente para el API. Las operaciones deben extender de GenericOperationComponent, este componente se encarga de realizar la validación de los parametros asi como su ejecución, sin embargo ningun de estas dos operaciones son responsabilidad del mismo, dicha clases solo la ejecuta, sin embargo, la clase hija debe implementar tanto el método de validación como la operación a realizar.
+Por ultimo, en la factoria se debe inyectar el nuevo componente en indicar con que codigo de operación (OperationType) corresponde.
+
+Esta logica permita que tanto el servicio como las demas capas se abstraigan de la implementación de nuevas operaciones.
