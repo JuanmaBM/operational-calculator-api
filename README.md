@@ -51,6 +51,9 @@ Donde el cuerpo de la petición tendrá el siguiente formato:
 }
 ```
 Donde la operación deberá ser un valor predeterminado de los disponible como operaciones permitidas dentro del microservicio. De esta forma, el API es extensible a la generación de nuevas operaciones sin perjudicar a los consumidores del API. Esto permitirá que el microservicio se despliegue con tecnicas como Canary Test/Canary Deployment sin que los consumidores sean afectados añadiendo de forma inmediata nuevas operaciones sin que estos tengan que cambiar el contrato del API.
+
+Como respuesta se devuelve un json con un campo con el valor obtenido. Se realiza de esta forma para adaptar a posibles extensiones en el tipo de resupuesta ante operaciones complejas. 
+
 Por otra parte, la inclusión de valores no permitidos en los parametros puede ocasionar excepciones controladas. Además si un consumidor indica un tipo de operación que no está incluida dentro del microservicio se indicará por medio de una excepcion que dicha operación no está disponible. Por ultimo, si una validación para una operación es erronea, se elevará una excepción para indicar al consumidor que los parametros enviados no pasan la validación para realizar la operación seleccionada. A continación se muestra una lista de los posibles errores con su respuesta HTTP correspondiente.
 
 * Bad Request 400 -> El tipo del valor de los parametros enviados no es permitido por el API
@@ -77,3 +80,25 @@ mvn clean package
 ```
 
 Respecto a la librería TracerAPI, se considera que debería encontrarse en un repositorio de dependencias tipo Nexus o Maven Central. Siguiendo esta buena practica se ha considerado instalar dicha dependencia en el repositorio local del equipo, de esta forma la gestión de la dependencia será transparente para el proyecto.
+
+Se ha añadido un fichero Dockerfile para contenerizar la aplicación, para ello se debe construir la imagen y seguidamente generar una instancia/contenedor de la misma. Para ello siga los siguientes pasos
+
+* Se debe encontrar en la raiz del proyecto
+* Debe ejecutar el comando para construir la imagen: docker build -f src/main/docker/Dockerfile . -t calculator/calculator
+* A continuación ejecutar el comando para crear un contenedor: docker run -p 8080:8080 --name calc calculator/calculator
+
+## Uso del API
+
+Para usar el API puede guiarse por la documentación proporcionada por Swagger a través de la ruta /swagger-ui.html
+
+Para realizar una operación recuerde que debe indicar dos parametros y un tipo de operación. En el momento de la edición de este documento existe las operaciones sum (suma) y sub (resta), por lo que puede realizar la siguiente petición como ejemplo:
+
+POST localhost:8080/calculadora
+
+```
+{
+  "parametro1":1.0,
+  "parametro2":1.0,
+  "operacion":"sum"
+}
+```
