@@ -65,7 +65,7 @@ Por ultimo, en la factoria se debe inyectar el nuevo componente en indicar con q
 
 Esta logica permita que tanto el servicio como las demas capas se abstraigan de la implementación de nuevas operaciones.
 
-## Instalación y ejecución
+# Instalación y ejecución
 
 Se ha incluido un fichero install.sh para instalar las dependencias del jar que se indicaba en el enunciado de la prueba y ademas empaquetar el artefacto en un fichero .jar. Este se puede encontrar en target/calculator-api-x.y.z-SNAPSHOT.jar (donde x.y.z es la versión actual del artefacto). Para ejecutar el mismo, debe ejecutar el siguiente comando: java -jar target/calculator-api-0.0.1-SNAPSHOT.jar
 
