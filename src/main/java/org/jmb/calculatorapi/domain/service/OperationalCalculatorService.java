@@ -2,8 +2,8 @@ package org.jmb.calculatorapi.domain.service;
 
 import javax.validation.ValidationException;
 
+import org.jmb.calculatorapi.domain.model.OperationResponse;
 import org.jmb.calculatorapi.domain.model.OperationType;
-import org.jmb.calculatorapi.dto.ResponseDto;
 
 public interface OperationalCalculatorService {
     /**
@@ -15,5 +15,5 @@ public interface OperationalCalculatorService {
      * @param operationType
      * @return
      */
-    ResponseDto performOperation(final Double parameter1, final Double parameter2, final OperationType operationType);
+    OperationResponse performOperation(final Double parameter1, final Double parameter2, final OperationType operationType);
 }
