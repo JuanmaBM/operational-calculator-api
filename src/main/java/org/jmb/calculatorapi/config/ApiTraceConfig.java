@@ -3,7 +3,6 @@ package org.jmb.calculatorapi.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import io.corp.calculator.TracerAPI;
 import io.corp.calculator.TracerImpl;
 
 @Configuration
