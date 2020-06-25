@@ -13,7 +13,7 @@ public enum OperationType {
         this.code = code;
     }
 
-    public Optional<OperationType> from(final String code) {
+    public static Optional<OperationType> from(final String code) {
         return code != null
             ? Stream.of(OperationType.values()).filter(x -> x.code.equalsIgnoreCase(code)).findFirst()
             : Optional.empty();
